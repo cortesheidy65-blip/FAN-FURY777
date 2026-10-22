@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fan Fury - Inicio</title>
+    <link rel="stylesheet" href="Styleprincipal.css">
+
+    <style>
+        /* MENU MEDIA FLOTANTE */
+        #menuCategoriasFlotante {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            font-family: Arial, sans-serif;
+        }
+
+        #menuCategoriasFlotante button {
+            box-sizing: border-box;
+            max-width: calc(100vw - 30px);
+            background-color: #dc2626;
+            color: #ffffff;
+            border: 1px solid #ef4444;
+            border-radius: 8px;
+            padding: 11px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.2s ease,
+                        transform 0.2s ease;
+        }
+
+        #menuCategoriasFlotante button:hover {
+            background-color: #991b1b;
+            transform: translateY(-2px);
+        }
+
+        /* BOTON PRINCIPAL MEDIA */
+        #botonCategorias {
+            border-radius: 25px;
+            padding: 14px 22px;
+            font-size: 15px;
+        }
+
+        /* OPCIONES DESPLEGABLES */
+        #opcionesCategorias {
+            display: none;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+            max-width: calc(100vw - 30px);
+            max-height: 38vh;
+            overflow-y: auto;
+            padding: 4px;
+        }
+
+        #opcionesCategorias.mostrar {
+            display: flex;
+        }
+
+        /* INFORMACION DE LAS CATEGORIAS */
+        #informacionCategoria {
+            display: none;
+            box-sizing: border-box;
+            width: 290px;
+            max-width: calc(100vw - 40px);
+            max-height: 28vh;
+            overflow-y: auto;
+            background-color: #101014;
+            color: #d4d4d8;
+            border: 1px solid #dc2626;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+        }
+
+        #informacionCategoria h3 {
+            color: #ef4444;
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+
+        #informacionCategoria p {
+            color: #d4d4d8;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0 0 14px;
+        }
+
+        #enlaceCategoria {
+            display: inline-block;
+            background-color: #dc2626;
+            color: #ffffff;
+            padding: 9px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        #enlaceCategoria:hover {
+            background-color: #991b1b;
+        }
+
+        /* ADAPTACION PARA CELULARES */
+        @media (max-width: 480px) {
+            #menuCategoriasFlotante {
+                right: 12px;
+                bottom: 12px;
+            }
+
+            #informacionCategoria {
+                width: 270px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU DE NAVEGACION SUPERIOR -->
+    <header class="main-header">
+        <div class="logo-container">
+            <img
+                src="IMG/Logotipo Esports FANFURY (1).png"
+                alt="Logo Fan Fury"
+                class="nav-logo">
+        </div>
+
+        <nav class="nav-menu" aria-label="Navegacion principal">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="prototipo.html">Prototipo</a></li>
+                <li><a href="quienes.html">Quiénes somos</a></li>
+                <li><a href="servicios.html">Nuestros servicios</a></li>
+                <li><a href="canvas.html">Canvas</a></li>
+                <li><a href="usuarios.html">Usuarios</a></li>
+                <li><a href="equipo.html">Equipo</a></li>
+                <li><a href="acceso.html">Web / QR</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main style="
+        width: 100%;
+        max-width: 100%;
+        padding: 25px 30px;
+        box-sizing: border-box;
+    ">
+
+        <!-- TITULO Y SUBTITULO -->
+        <div style="
+            background-color: #101014;
+            border: 1px solid #22222d;
+            border-radius: 14px;
+            padding: 30px 20px;
+            text-align: center;
+            width: 100%;
+            margin: 0 auto 25px auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            box-sizing: border-box;
+        ">
+            <h1 style="
+                font-size: 2.3rem;
+                color: #ffffff;
+                margin-bottom: 8px;
+                font-weight: 900;
+                letter-spacing: 1px;
+            ">
+                ¡BIENVENIDOS A LA CANCHA!
+            </h1>
+
+            <p style="
+                font-size: 1.1rem;
+                color: #dc2626;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                margin: 0;
+            ">
+                PASIÓN POR EL FÚTBOL, RESPETO POR LOS DEMÁS.
+            </p>
+        </div>
+
+        <!-- VIDEO DE LA MASCOTA -->
+        <div style="
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        ">
+            <div style="
+                width: 100%;
+                max-width: 400px;
+                border-radius: 10px;
+                overflow: hidden;
+                border: 2px solid #dc2626;
+                background: #000;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            ">
+                <video
+                    controls
+                    autoplay
+                    loop
+                    muted
+                    width="100%"
+                    style="
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                        object-fit: contain;
+                    ">
+                    <source src="VIDEO/mascota.mp4" type="video/mp4">
+                    Tu navegador no admite la reproducción de este video.
+                </video>
+            </div>
+        </div>
+
+        <!-- TARJETA DE INFORMACION -->
+        <div style="
+            background-color: #101014;
+            border: 1px solid #22222d;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        ">
+            <p style="
+                color: #d4d4d8;
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            ">
+                Somos un proyecto de investigación del
+                <strong>Colegio Alfonso López Michelsen</strong>
+                (Grado 11, Bogotá). Buscamos prevenir la violencia escolar
+                derivada de las rivalidades entre hinchadas de fútbol.
+            </p>
+
+            <div style="
+                background-color: #17171d;
+                border-left: 4px solid #dc2626;
+                padding: 18px;
+                border-radius: 6px;
+                margin-bottom: 25px;
+            ">
+                <p style="
+                    color: #d4d4d8;
+                    font-size: 0.95rem;
+                    line-height: 1.5;
+                    margin: 0;
+                ">
+                    🛡️ <strong>Nuestra Meta:</strong>
+                    Nuestra meta es crear conciencia sobre las barras bravas,
+                    promover el respeto entre hinchas y demostrar que la pasión
+                    por el fútbol no debe convertirse en violencia.
+                </p>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <a
+                    href="prototipo.html"
+                    style="
+                        background-color: #dc2626;
+                        color: #ffffff;
+                        padding: 12px 25px;
+                        border-radius: 6px;
+                        text-decoration: none;
+                        font-weight: bold;
+                        display: inline-block;
+                    ">
+                    Explorar Prototipo →
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- MENU FLOTANTE MEDIA -->
+    <div id="menuCategoriasFlotante">
+
+        <!-- INFORMACION DE CADA CATEGORIA -->
+        <section
+            id="informacionCategoria"
+            aria-live="polite"
+            aria-labelledby="tituloCategoria">
+
+            <h3 id="tituloCategoria"></h3>
+            <p id="textoCategoria"></p>
+
+            <a id="enlaceCategoria" href="index.html">
+                Abrir sección →
+            </a>
+        </section>
+
+        <!-- OPCIONES DEL MENU MEDIA -->
+        <div id="opcionesCategorias" aria-label="Secciones multimedia">
+
+            <button
+                type="button"
+                onclick="mostrarCategoria('sustentacion')">
+                Sustentación
+            </button>
+
+            <button
+                type="button"
+                onclick="mostrarCategoria('mitigacion')">
+                Producto de mitigación
+            </button>
+
+            <button
+                type="button"
+                onclick="mostrarCategoria('proyecto')">
+                Proyecto
+            </button>
+
+            <button
+                type="button"
+                onclick="mostrarCategoria('resultados')">
+                Resultados
+            </button>
+
+            <!-- NUEVO BOTON PRESUPUESTO -->
+            <button
+                type="button"
+                onclick="mostrarCategoria('presupuesto')">
+                Presupuesto
+            </button>
+
+        </div>
+
+        <!-- BOTON PRINCIPAL MEDIA -->
+        <button
+            type="button"
+            id="botonCategorias"
+            aria-expanded="false"
+            aria-controls="opcionesCategorias"
+            onclick="alternarMenu()">
+            MEDIA
+        </button>
+    </div>
+
+    <!-- FUNCIONALIDAD DEL MENU MEDIA -->
+    <script>
+        // INFORMACION Y ENLACES DE LAS CATEGORIAS
+        const categorias = {
+
+            sustentacion: {
+                titulo: "Sustentación",
+                texto: "En esta sección presentamos y explicamos el proyecto FAN FURY, sus objetivos, su proceso de desarrollo y la propuesta para promover el respeto entre las hinchadas de fútbol.",
+                pagina: "sustentacion.html"
+            },
+
+            mitigacion: {
+                titulo: "Producto de mitigación",
+                texto: "Aquí encontrarás información sobre el producto de mitigación de FAN FURY y cómo busca contribuir a prevenir la violencia asociada a las rivalidades entre hinchas.",
+                pagina: "mitigacion.html"
+            },
+
+            proyecto: {
+                titulo: "Proyecto",
+                texto: "Conoce nuestro proyecto de investigación del Colegio Alfonso López Michelsen, enfocado en prevenir la violencia escolar relacionada con las rivalidades entre las hinchadas de fútbol.",
+                pagina: "proyecto.html"
+            },
+
+            resultados: {
+                titulo: "Resultados",
+                texto: "En esta sección puedes consultar los resultados obtenidos durante el desarrollo de FAN FURY y los avances de nuestra investigación.",
+                pagina: "resultados.html"
+            },
+
+            // NUEVA CATEGORIA PRESUPUESTO
+            presupuesto: {
+                titulo: "Presupuesto",
+                texto: "Consulta el presupuesto de FAN FURY, los recursos necesarios para desarrollar el proyecto y los costos estimados de sus materiales, herramientas y funcionamiento.",
+                pagina: "presupuesto.html"
+            }
+        };
+
+        // ABRIR Y CERRAR EL MENU
+        function alternarMenu() {
+            const opciones = document.getElementById("opcionesCategorias");
+            const boton = document.getElementById("botonCategorias");
+            const informacion = document.getElementById("informacionCategoria");
+
+            const menuAbierto = opciones.classList.toggle("mostrar");
+
+            boton.setAttribute("aria-expanded", String(menuAbierto));
+
+            boton.textContent = menuAbierto
+                ? "✕ Cerrar"
+                : "MEDIA";
+
+            if (!menuAbierto) {
+                informacion.style.display = "none";
+            }
+        }
+
+        // MOSTRAR LA INFORMACION DE LA CATEGORIA SELECCIONADA
+        function mostrarCategoria(clave) {
+            const categoria = categorias[clave];
+
+            if (!categoria) {
+                return;
+            }
+
+            document.getElementById("tituloCategoria").textContent =
+                categoria.titulo;
+
+            document.getElementById("textoCategoria").textContent =
+                categoria.texto;
+
+            const enlace = document.getElementById("enlaceCategoria");
+
+            enlace.href = categoria.pagina;
+            enlace.textContent = "Abrir " + categoria.titulo + " →";
+
+            document.getElementById("informacionCategoria").style.display =
+                "block";
+        }
+    </script>
+
+</body>
+</html>

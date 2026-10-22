@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fan Fury - Gestión de Usuarios</title>
+    <link rel="stylesheet" href="Styleprincipal.css">
+
+    <style>
+        body {
+            background-color: #0d0d11;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .usuarios-container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .usuarios-hero {
+            background: linear-gradient(135deg, #17171d, #101014);
+            border: 1px solid #22222d;
+            border-left: 6px solid #dc2626;
+            border-radius: 14px;
+            padding: 40px 30px;
+            margin-bottom: 35px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .usuarios-hero h1 {
+            color: #ffffff;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+
+        .usuarios-hero h1 span {
+            color: #dc2626;
+        }
+
+        .usuarios-hero p {
+            color: #d4d4d8;
+            font-size: 1.05rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .forms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .form-card {
+            background-color: #17171d;
+            border: 1px solid #22222d;
+            border-radius: 14px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .form-card:hover {
+            border-color: #dc2626;
+        }
+
+        .form-card h2 {
+            color: #ffffff;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .card-subtitle {
+            color: #a1a1aa;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            color: #d4d4d8;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #101014;
+            border: 1px solid #2f2f3d;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #dc2626;
+        }
+
+        .password-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-wrapper input {
+            padding-right: 45px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            background: none;
+            border: none;
+            color: #a1a1aa;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-action {
+            width: 100%;
+            background-color: #dc2626;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-action:hover {
+            background-color: #b91c1c;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #27272a;
+        }
+
+        .btn-secondary:hover {
+            background-color: #3f3f46;
+        }
+
+        .mensaje {
+            display: none;
+            padding: 14px;
+            margin-top: 20px;
+            border-radius: 8px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .mensaje.exito {
+            display: block;
+            background-color: #17251c;
+            border: 1px solid #32834c;
+            color: #a7f3b8;
+        }
+
+        .mensaje.info {
+            display: block;
+            background-color: #20202a;
+            border: 1px solid #52525b;
+            color: #e4e4e7;
+        }
+
+        .ayuda {
+            margin-top: 35px;
+            background-color: #101014;
+            border: 1px dashed #2f2f3d;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .ayuda p {
+            color: #a1a1aa;
+            font-size: 0.9rem;
+        }
+
+        .ayuda a {
+            color: #dc2626;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navegacion-inferior {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-nav {
+            background-color: #27272a;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .btn-nav.siguiente {
+            background-color: #dc2626;
+        }
+
+        @media (max-width: 768px) {
+            .forms-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .usuarios-hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .usuarios-hero {
+                padding: 30px 20px;
+            }
+
+            .form-card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="main-header">
+    <div class="logo-container">
+        <img
+            src="IMG/Logotipo Esports FANFURY (1).png"
+            alt="Logo Fan Fury"
+            class="nav-logo"
+        >
+    </div>
+
+    <nav class="nav-menu">
+        <ul>
+               <li><a href="index.html">Inicio</a></li>
+                <li><a href="prototipo.html">Prototipo</a></li>
+                <li><a href="quienes.html">Quiénes somos</a></li>
+                <li><a href="servicios.html">Nuestros servicios</a></li>
+                <li><a href="canvas.html">Canvas</a></li>
+                <li><a href="usuarios.html">Usuarios</a></li>
+                <li><a href="equipo.html">Equipo</a></li>
+                <li><a href="acceso.html">Web / QR</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="usuarios-container">
+
+    <section class="usuarios-hero">
+        <h1>
+            ¡Únete al cambio y vive una
+            <span>Pasión sin Violencia</span> ⚽🔥
+        </h1>
+
+        <p>
+            Forma parte de la comunidad Fan Fury. Conoce más sobre el
+            barrismo social, aprende sobre la convivencia y demuestra
+            que apoyar a tu equipo también significa respetar a los demás.
+        </p>
+    </section>
+
+    <div class="forms-grid">
+
+        <!-- REGISTRO DE DEMOSTRACIÓN -->
+        <section class="form-card" id="registro-seccion">
+            <h2>📝 Regístrate ahora</h2>
+
+            <p class="card-subtitle">
+                Completa tus datos para participar en la demostración de Fan Fury.
+            </p>
+
+            <form id="form-registro">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo</label>
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Ej. Carlos Pérez"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="edad">Edad</label>
+                    <input
+                        type="number"
+                        id="edad"
+                        name="edad"
+                        placeholder="Ej. 17"
+                        min="10"
+                        max="99"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="correo">Correo electrónico</label>
+                    <input
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        placeholder="correo@ejemplo.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="equipo">Equipo de fútbol favorito</label>
+                    <input
+                        type="text"
+                        id="equipo"
+                        name="equipo"
+                        placeholder="Escribe tu equipo favorito"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="barra">Barra o grupo de apoyo (opcional)</label>
+                    <input
+                        type="text"
+                        id="barra"
+                        name="barra"
+                        placeholder="O escribe hincha independiente"
+                    >
+                </div>
+
+                <button type="submit" class="btn-action">
+                    Completar registro
+                </button>
+
+                <div
+                    id="mensaje-registro"
+                    class="mensaje"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+            </form>
+        </section>
+
+        <!-- INICIO DE SESIÓN DE DEMOSTRACIÓN -->
+        <section class="form-card">
+            <h2>🔑 Iniciar sesión</h2>
+
+            <p class="card-subtitle">
+                Prueba la pantalla de acceso de nuestro prototipo.
+            </p>
+
+            <form id="form-login">
+                <div class="form-group">
+                    <label for="login-correo">Correo electrónico</label>
+                    <input
+                        type="email"
+                        id="login-correo"
+                        name="login-correo"
+                        placeholder="correo@ejemplo.com"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">Contraseña de demostración</label>
+
+                    <div class="password-wrapper">
+                        <input
+                            type="password"
+                            id="login-password"
+                            name="login-password"
+                            placeholder="Escribe una clave de prueba"
+                            autocomplete="off"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            id="toggle-password"
+                            aria-label="Mostrar contraseña"
+                            aria-pressed="false"
+                        >👁️</button>
+                    </div>
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn-action btn-secondary"
+                    style="margin-top: 10px;"
+                >
+                    Entrar a la plataforma
+                </button>
+
+                <div
+                    id="mensaje-login"
+                    class="mensaje"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+            </form>
+
+            <div class="ayuda">
+                <p>¿Quieres conocer más sobre nuestro proyecto?</p>
+                <a href="proyecto.html">
+                    Conoce más sobre Fan Fury →
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="navegacion-inferior">
+        <a href="sustentacion.html" class="btn-nav">
+            ← Canvas
+        </a>
+
+        <a href="equipo.html" class="btn-nav siguiente">
+            Equipo →
+        </a>
+    </div>
+
+</main>
+
+<script>
+    // REGISTRO SIMULADO: no envía datos a GitHub Pages.
+    document.getElementById("form-registro").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const nombre = document.getElementById("nombre").value.trim();
+        const edad = Number(document.getElementById("edad").value);
+        const correo = document.getElementById("correo").value.trim();
+        const equipo = document.getElementById("equipo").value.trim();
+        const mensaje = document.getElementById("mensaje-registro");
+
+        if (!nombre || !correo || !equipo || !edad) {
+            return;
+        }
+
+        if (edad < 10 || edad > 99) {
+            mensaje.className = "mensaje info";
+            mensaje.textContent = "Por favor, verifica que la edad sea correcta.";
+            return;
+        }
+
+        mensaje.className = "mensaje exito";
+        mensaje.textContent =
+            "¡Registro de demostración exitoso, " + nombre +
+            "! Bienvenido/a a Fan Fury. ⚽❤️";
+
+        // No se guardan ni se envían los datos.
+        this.reset();
+    });
+
+    // INICIO DE SESIÓN SIMULADO.
+    document.getElementById("form-login").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const mensaje = document.getElementById("mensaje-login");
+
+        mensaje.className = "mensaje info";
+        mensaje.textContent =
+        
+            "Inicio de sesion activo";
+    });
+
+    // MOSTRAR U OCULTAR CONTRASEÑA.
+    document.getElementById("toggle-password").addEventListener("click", function() {
+        const campo = document.getElementById("login-password");
+        const visible = campo.type === "password";
+
+        campo.type = visible ? "text" : "password";
+        this.setAttribute("aria-pressed", String(visible));
+        this.setAttribute(
+            "aria-label",
+            visible ? "Ocultar contraseña" : "Mostrar contraseña"
+        );
+        this.textContent = visible ? "🙈" : "👁️";
+    });
+</script>
+
+</body>
+</html>
